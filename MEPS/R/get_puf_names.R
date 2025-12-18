@@ -262,9 +262,9 @@ load_puf_names_file <- function() {
   }
 
   # Try to load latest PUF names from GitHub
-  meps_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_file_names.csv"
-
-  puf_names_current <- try(utils::read.csv(meps_file, stringsAsFactors = F), silent = T)
+  # meps_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_file_names.csv"
+  #
+  # puf_names_current <- try(utils::read.csv(meps_file, stringsAsFactors = F), silent = T)
 
   # If connection to GitHub isn't working (e.g. firewall won't let you connect)
   #  then use local cached data
@@ -291,9 +291,9 @@ load_long_names_file <- function() {
   }
 
   # Try to load latest PUF names from GitHub
-  meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
-
-  long_names_current <- try(utils::read.csv(meps_long_file, stringsAsFactors = F), silent = T)
+  # meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
+  #
+  # long_names_current <- try(utils::read.csv(meps_long_file, stringsAsFactors = F), silent = T)
 
   # If connection to GitHub isn't working (e.g. firewall won't let you connect)
   #  then use local cached data
