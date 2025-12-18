@@ -28,27 +28,27 @@ setwd("MEPS")
 # meps_file = r"C:\Users\sshres07\Box\Work_folder\R_Package_update\meps_r_pkg\MEPS\data\pufnames_update_2023.txt"
 # puf_names_current <- utils::read.csv("C:/Users/sshres07/Box/Work_folder/R_Package_update/meps_r_pkg/MEPS/data/pufnames_update_2023.txt", stringsAsFactors = F)
 
-puf_names_current <- utils::read.csv(
-  system.file("data", "pufnames_update_2023.txt", package = "MEPS"),
-  stringsAsFactors = FALSE
-)
+# puf_names_current <- utils::read.csv(
+#   system.file("data", "pufnames_update_2023.txt", package = "MEPS"),
+#   stringsAsFactors = FALSE
+# )
 
-meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
+# meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
 
-long_names_current <- utils::read.csv(meps_long_file, stringsAsFactors = F)
-
-
-# or this:
-# puf_names_current  = read.csv("../../hhs_ahrq/MEPS/Quick_Reference_Guides/meps_file_names.csv")
-# long_names_current = read.csv("../../hhs_ahrq/MEPS/Quick_Reference_Guides/meps_longitudinal_file_names.csv")
+# long_names_current <- utils::read.csv(meps_long_file, stringsAsFactors = F)
 
 
-puf_names_cached <- puf_names_current %>%
-  dplyr::mutate(Year = suppressWarnings(as.numeric(Year))) %>%
-  dplyr::filter(!is.na(Year))
+# # or this:
+# # puf_names_current  = read.csv("../../hhs_ahrq/MEPS/Quick_Reference_Guides/meps_file_names.csv")
+# # long_names_current = read.csv("../../hhs_ahrq/MEPS/Quick_Reference_Guides/meps_longitudinal_file_names.csv")
 
-long_names_cached <- long_names_current %>% 
-  dplyr::filter(File_Name != "")
+
+# puf_names_cached <- puf_names_current %>%
+#   dplyr::mutate(Year = suppressWarnings(as.numeric(Year))) %>%
+#   dplyr::filter(!is.na(Year))
+
+# long_names_cached <- long_names_current %>% 
+#   dplyr::filter(File_Name != "")
 
 usethis::use_data(puf_names_cached, internal = F, overwrite = T)
 usethis::use_data(long_names_cached, internal = F, overwrite = T)
