@@ -257,27 +257,28 @@ get_puf_names <- function(year, type, panel, long_type = "2-year", web = T) {
 load_puf_names_file <- function() {
 
   # If no internet connection, use cached file
-  if(!curl::has_internet()) {
-    return(puf_names_cached)
-  }
-
-  # Try to load latest PUF names from GitHub
-  # meps_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_file_names.csv"
+  # if(!curl::has_internet()) {
+  #   return(puf_names_cached)
+  # }
   #
-  # puf_names_current <- try(utils::read.csv(meps_file, stringsAsFactors = F), silent = T)
+  # # Try to load latest PUF names from GitHub
+  # # meps_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_file_names.csv"
+  # #
+  # # puf_names_current <- try(utils::read.csv(meps_file, stringsAsFactors = F), silent = T)
+  #
+  # # If connection to GitHub isn't working (e.g. firewall won't let you connect)
+  # #  then use local cached data
+  #
+  # if(class(puf_names_current) == "try-error") {
+  #   warning("Loading cached PUF names instead.")
+  #   return(puf_names_cached)
+  # }
+  #
+  # # puf_names <- puf_names_current %>%
+  # #   dplyr::mutate(Year = suppressWarnings(as.numeric(Year))) %>%
+  # #   dplyr::filter(!is.na(Year))
 
-  # If connection to GitHub isn't working (e.g. firewall won't let you connect)
-  #  then use local cached data
-  if(class(puf_names_current) == "try-error") {
-    warning("Loading cached PUF names instead.")
-    return(puf_names_cached)
-  }
-
-  puf_names <- puf_names_current %>%
-    dplyr::mutate(Year = suppressWarnings(as.numeric(Year))) %>%
-    dplyr::filter(!is.na(Year))
-
-  return(puf_names)
+  return(puf_names_cached)
 
 }
 
@@ -286,27 +287,27 @@ load_puf_names_file <- function() {
 load_long_names_file <- function() {
 
   # If no internet connection, use cached file
-  if(!curl::has_internet()) {
-    return(long_names_cached)
-  }
-
-  # Try to load latest PUF names from GitHub
-  # meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
+  # if(!curl::has_internet()) {
+  #   return(long_names_cached)
+  # }
   #
-  # long_names_current <- try(utils::read.csv(meps_long_file, stringsAsFactors = F), silent = T)
+  # # Try to load latest PUF names from GitHub
+  # # meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
+  # #
+  # # long_names_current <- try(utils::read.csv(meps_long_file, stringsAsFactors = F), silent = T)
+  #
+  # # If connection to GitHub isn't working (e.g. firewall won't let you connect)
+  # #  then use local cached data
+  # if(class(long_names_current) == "try-error") {
+  #   warning("Loading cached PUF names instead.")
+  #   return(long_names_cached)
+  # }
+  #
+  # long_names <- long_names_current %>%
+  #   dplyr::mutate(Panel = suppressWarnings(as.numeric(Panel))) %>%
+  #   dplyr::filter(!is.na(Panel))
 
-  # If connection to GitHub isn't working (e.g. firewall won't let you connect)
-  #  then use local cached data
-  if(class(long_names_current) == "try-error") {
-    warning("Loading cached PUF names instead.")
-    return(long_names_cached)
-  }
-
-  long_names <- long_names_current %>%
-    dplyr::mutate(Panel = suppressWarnings(as.numeric(Panel))) %>%
-    dplyr::filter(!is.na(Panel))
-
-  return(long_names)
+  return(long_names_cached)
 }
 
 
