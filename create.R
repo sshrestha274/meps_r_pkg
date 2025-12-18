@@ -26,9 +26,15 @@ setwd("MEPS")
 
 # Add/update meps_puf_names in case internet connection is unavailable --------
 # meps_file = r"C:\Users\sshres07\Box\Work_folder\R_Package_update\meps_r_pkg\MEPS\data\pufnames_update_2023.txt"
-puf_names_current <- utils::read.csv("C:/Users/sshres07/Box/Work_folder/R_Package_update/meps_r_pkg/MEPS/data/pufnames_update_2023.txt", stringsAsFactors = F)
+# puf_names_current <- utils::read.csv("C:/Users/sshres07/Box/Work_folder/R_Package_update/meps_r_pkg/MEPS/data/pufnames_update_2023.txt", stringsAsFactors = F)
+
+puf_names_current <- utils::read.csv(
+  system.file("data", "pufnames_update_2023.txt", package = "MEPS"),
+  stringsAsFactors = FALSE
+)
 
 meps_long_file = "https://raw.githubusercontent.com/HHS-AHRQ/MEPS/master/Quick_Reference_Guides/meps_longitudinal_file_names.csv"
+
 long_names_current <- utils::read.csv(meps_long_file, stringsAsFactors = F)
 
 
